@@ -23,11 +23,11 @@ Portfolio interativo construído com React, TypeScript e Tailwind CSS, apresenta
 
 | Hero | Sobre Mim |
 |------|-----------|
-| ![Hero](./screenshots/hero.png) | ![Sobre](./screenshots/about.png) |
+| ![Hero]() | ![Sobre]() |
 
 | Projetos | Contato |
 |----------|---------|
-| ![Projetos](./screenshots/projects.png) | ![Contato](./screenshots/contact.png) |
+| ![Projetos]() | ![Contato]() |
 
 </div>
 
