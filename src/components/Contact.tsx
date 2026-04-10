@@ -32,7 +32,7 @@ export default function Contact() {
           from_email: formData.email,
           message: formData.message,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
       );
 
       setStatus('success');
