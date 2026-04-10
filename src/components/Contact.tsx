@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import SectionTitle from './SectionTitle';
 import { socialLinks } from '../data/portfolio';
+
+// Status do envio do formulário
+type SendStatus = 'idle' | 'sending' | 'success' | 'error';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -8,18 +12,39 @@ export default function Contact() {
     email: '',
     message: '',
   });
+  const [status, setStatus] = useState<SendStatus>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: Implemente a lógica de envio aqui (ex: EmailJS, API, etc.)
-    console.log('Formulário enviado:', formData);
-    alert('Mensagem enviada com sucesso! 🎉');
-    setFormData({ name: '', email: '', message: '' });
+    setStatus('sending');
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+
+      // Reseta o status após 5 segundos
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error('Erro ao enviar:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -90,9 +115,27 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="btn-glow w-full px-8 py-4 rounded-xl text-white font-semibold text-base tracking-wide"
+              disabled={status === 'sending'}
+              className={`w-full px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-300 ${
+                status === 'success'
+                  ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                  : status === 'error'
+                  ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                  : 'btn-glow text-white'
+              } ${status === 'sending' ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
-              Enviar Mensagem
+              {status === 'idle' && 'Enviar Mensagem'}
+              {status === 'sending' && (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  </svg>
+                  Enviando...
+                </span>
+              )}
+              {status === 'success' && '✅ Mensagem enviada com sucesso!'}
+              {status === 'error' && '❌ Erro ao enviar. Tente novamente.'}
             </button>
           </form>
 
