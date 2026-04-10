@@ -11,7 +11,7 @@ Portfolio interativo construído com React, TypeScript e Tailwind CSS, apresenta
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.2-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
 
-[🔗 Ver Online](#) · [📂 Repositório](https://github.com/reuel02/portfolio-reuel-ferreira)
+[🔗 Ver Online](https://portfoliodev-reuel-ferreira.vercel.app/) · [📂 Repositório](https://github.com/reuel02/portfolio-reuel-ferreira)
 
 </div>
 
