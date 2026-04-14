@@ -92,7 +92,7 @@ export const projects: Project[] = [
     title: 'ZapCart - Catálogo digital',
     description:
       'Catálogo digital e carrinho de compras Mobile-First com checkout direto no WhatsApp. Desenvolvido com React, Vite e Tailwind CSS focado em conversão e usabilidade sem taxas para o lojista.',
-    image: '../screenshots/zap-cart-preview.png',
+    image: '/screenshots/zap-cart-preview.png',
     techStack: ['JavaScript', 'React', 'TailwindCSS', 'Vite'],
     githubUrl: 'https://github.com/reuel02/zapcart',
     demoUrl: "zapcart-azure.vercel.app/",
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     title: 'Portfolio Interativo',
     description:
       'Este portfolio! Construído com React e TypeScript, apresentando design moderno com tema escuro, animações suaves e responsividade completa.',
-    image: '../screenshots/portfolio-dev-preview.png',
+    image: '/screenshots/portfolio-dev-preview.png',
     techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     githubUrl: 'https://github.com/reuel02/portfolio-reuel-ferreira',
     demoUrl: 'https://portfoliodev-reuel-ferreira.vercel.app/',
@@ -114,7 +114,7 @@ export const projects: Project[] = [
     title: 'BarberPRO API',
     description:
       'API MVC construída com Python, Flask, SQLAlchemy e PostgreSQL para gerenciar agendas, profissionais e validação inteligente de horários.',
-    image: '../screenshots/api-barberpro-preview.png',
+    image: '/screenshots/api-barberpro-preview.png',
     techStack: ['Python', 'Flask', 'PostgreSQL', 'SQLAlchemy'],
     githubUrl: 'https://github.com/reuel02/barberpro-api-backend',
     category: 'Back-end',
