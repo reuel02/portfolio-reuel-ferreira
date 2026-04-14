@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import SectionTitle from './SectionTitle';
 import { socialLinks } from '../data/portfolio';
@@ -12,7 +12,6 @@ const EMAILJS_TEMPLATE_ID = 'template_yeir1cu';
 const EMAILJS_PUBLIC_KEY = 'BZqIBjILyQQUoXnvs';
 
 export default function Contact() {
-  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -123,13 +122,12 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className={`w-full px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-300 ${
-                status === 'success'
+              className={`w-full px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-300 ${status === 'success'
                   ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                   : status === 'error'
-                  ? 'bg-red-500/20 text-red-400 border border-red-500/30'
-                  : 'btn-glow text-white'
-              } ${status === 'sending' ? 'opacity-70 cursor-not-allowed' : ''}`}
+                    ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                    : 'btn-glow text-white'
+                } ${status === 'sending' ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
               {status === 'idle' && 'Enviar Mensagem'}
               {status === 'sending' && (
